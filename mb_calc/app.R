@@ -29,7 +29,9 @@ ui <- dashboardPage(
                                       ### Fórmula de Cálculo do Metabolismo Basal
                                       
                                       Metabolismo Basal (MB) = 66,5 + (13,75 x peso em kg) + (5,003 x altura em cm) - (6,75 x idade em anos)
-                                      Metabolismo Basal (MB) * Fator de Atividade"))),
+                                      Metabolismo Basal (MB) * Fator de Atividade
+                                      
+                                      Pressione o botão Calcular para ter o Resultado."))),
       fluidRow(column(12, h2(uiOutput(outputId = "resultado")))),
       fluidRow(column(12, actionButton("calcular", "Calcular",width = 150)))))
 
@@ -64,8 +66,11 @@ server <- function(input, output) {
     
     func <- as.character(round(metabolismo(input$peso, input$altura, input$idade, input$atividade),0))
     
-    resultado <- HTML(paste0("Para perda de peso consuma menos que " ,func, " kcal em seu dia.",br(),br(),
-                        "Para ganho de peso consuma mais que ",func, " kcal em seu dia.",br(),br() ))
+    resultado <- markdown(paste0("### Resultado:
+    
+                                  ### Para perda de peso consuma menos que ",func," kcal em seu dia
+                                  
+                                  ### Para ganho de peso consuma menos que ",func," kcal em seu dia"))
     
     output$resultado <- renderUI({ resultado })
     
