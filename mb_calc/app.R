@@ -14,13 +14,24 @@ ui <- dashboardPage(
     ),
     
     dashboardBody(
-      fluidRow(column(12, HTML(paste0(p("Metabolismo Basal (MB) = 66,5 + (13,75 x peso em kg) + (5,003 x altura em cm) - (6,75 x idade em anos)",br(),
-                                        "Metabolismo Basal (MB) * Fator de Atividade"))))),
+      fluidRow(column(12, markdown("  ### Instruções
+      
+                                      Ao lado Selecione seu peso, altura, idade e nível de atividade.
+                                      
+                                      ### Níveis de Atividade
+                                      
+                                      * Sedentário (pouco ou nenhum exercício): MB x 1,2
+                                      * Levemente ativo (exercício leve ou esportes 1-3 dias/semana): MB x 1,375
+                                      * Moderadamente ativo (exercício moderado 3-5 dias/semana): MB x 1,55
+                                      * Muito ativo (exercício intenso 6-7 dias/semana): MB x 1,725
+                                      * Extremamente ativo (exercício intenso diário ou exercício físico + trabalho físico): MB x 1,9
+                                      
+                                      ### Fórmula de Cálculo do Metabolismo Basal
+                                      
+                                      Metabolismo Basal (MB) = 66,5 + (13,75 x peso em kg) + (5,003 x altura em cm) - (6,75 x idade em anos)
+                                      Metabolismo Basal (MB) * Fator de Atividade"))),
       fluidRow(column(12, h2(uiOutput(outputId = "resultado")))),
-      fluidRow(column(12, actionButton("calcular", "Calcular",width = 150)))
-    )
-    
-  )
+      fluidRow(column(12, actionButton("calcular", "Calcular",width = 150)))))
 
 # Define server logic required to draw a histogram
 server <- function(input, output) {
