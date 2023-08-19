@@ -70,7 +70,7 @@ server <- function(input, output) {
     
                                   ### Para perda de peso consuma menos que ",func," kcal em seu dia
                                   
-                                  ### Para ganho de peso consuma menos que ",func," kcal em seu dia"))
+                                  ### Para ganho de peso consuma mais que ",func," kcal em seu dia"))
     
     output$resultado <- renderUI({ resultado })
     
